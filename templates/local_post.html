@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>동찾기</title>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</head>
+<body>
+    <div id="result"></div>
+    <script>
+        new daum.Postcode({
+            oncomplete: function(data) {
+                document.querySelector("div#result").innerHTML = JSON.stringify(data);
+            }, showMoreHName: true
+        }).open({q: '{{ request.args.get("q") }}'});
+    </script>
+</body>
+</html>
